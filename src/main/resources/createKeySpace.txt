@@ -30,4 +30,8 @@ timestamp,recordDate text,PRIMARY KEY
 CREATE TABLE TrafficKeySpace.Average_Speed_Traffic (ptsId text,
 averageSpeed double,  timeStamp
 timestamp,recordDate text,PRIMARY KEY
-(ptsId,averageSpeed,recordDate));
+(ptsId,timeStamp))  WITH CLUSTERING ORDER BY (timeStamp desc) ;
+
+
+SELECT * FROM traffickeyspace.average_speed_traffic WHERE ptsid = 'PTS_1' LIMIT 1 ALLOW FILTERING
+;
