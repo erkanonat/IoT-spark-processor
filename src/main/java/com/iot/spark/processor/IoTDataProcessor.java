@@ -54,22 +54,8 @@ public class IoTDataProcessor {
 			    );
 		 logger.info("Starting Stream Processing");
 		 
-		 //We need non filtered stream for poi traffic data calculation
-		 JavaDStream<IoTData> iotDataStream = directKafkaStream.map(tuple -> tuple._2());
 
-		 // i don't need this.
-		 //We need filtered stream for total and traffic data calculation
-		 //JavaPairDStream<String,IoTData> iotDataPairStream = nonFilteredIotDataStream.mapToPair(iot -> new Tuple2<String,IoTData>(iot.getVehicleId(),iot)).reduceByKey((a, b) -> a );
-		 // Check vehicle Id is already processed
-		 //JavaMapWithStateDStream<String, IoTData, Boolean, Tuple2<IoTData,Boolean>> iotDStreamWithStatePairs = iotDataPairStream
-		 //					.mapWithState(StateSpec.function(processedVehicleFunc).timeout(Durations.seconds(3600)));//maintain state for one hour
-		 // Filter processed vehicle ids and keep un-processed
-		 //JavaDStream<Tuple2<IoTData,Boolean>> filteredIotDStreams = iotDStreamWithStatePairs.map(tuple2 -> tuple2)
-         //				.filter(tuple -> tuple._2.equals(Boolean.FALSE));
-		 // Get stream of IoTdata
-		 //JavaDStream<IoTData> filteredIotDataStream = filteredIotDStreams.map(tuple -> tuple._1);
-		 //cache stream as it is used in total and window based computation
-		 //filteredIotDataStream.cache();
+		 JavaDStream<IoTData> iotDataStream = directKafkaStream.map(tuple -> tuple._2());
 
          iotDataStream.cache();
 
@@ -78,6 +64,7 @@ public class IoTDataProcessor {
 		 iotTrafficProcessor.processTotalTrafficData(iotDataStream);
 		 iotTrafficProcessor.processWindowTrafficData(iotDataStream);
 		 iotTrafficProcessor.controlAnomally(iotDataStream);
+		 iotTrafficProcessor.calculateAverageSpeed(iotDataStream);
 		 
 		 //start context
 		 jssc.start();            

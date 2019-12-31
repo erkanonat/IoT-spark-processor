@@ -5,7 +5,12 @@ replication = {'class':'SimpleStrategy',
 drop table TrafficKeySpace.Total_Traffic;
 drop table TrafficKeySpace.Window_Traffic;
 drop table TrafficKeySpace.Anomally_Traffic_Data;
+drop table traffickeyspace.Average_Speed_Traffic;
 
+truncate table traffickeyspace.anomally_traffic_data;
+truncate table traffickeyspace.average_speed_traffic;
+truncate table traffickeyspace.total_traffic;
+truncate table traffickeyspace.window_traffic;
 
 CREATE TABLE TrafficKeySpace.Total_Traffic (ptsId text,
 vehicleType text, totalCount bigint, timeStamp

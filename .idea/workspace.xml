@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="efe950f1-df78-4a76-90a3-76f6d4bc2cfa" name="Default Changelist" comment="addd">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iot/spark/entity/AverageSpeedTrafficData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/createKeySpace.txt" afterDir="false" />
+    <list default="true" id="efe950f1-df78-4a76-90a3-76f6d4bc2cfa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTDataProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTDataProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTTrafficDataProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTTrafficDataProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/createKeySpace.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/createKeySpace.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,45 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/entity/AnomallyTrafficData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/entity/TotalTrafficData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="16" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/dto/IoTData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-              <folding>
-                <element signature="e#1148#1149#0" expanded="true" />
-                <element signature="e#1167#1168#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTDataProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+            <state relative-caret-position="276">
+              <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,27 +51,33 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTTrafficDataProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="83" column="86" selection-start-line="83" selection-start-column="86" selection-end-line="83" selection-end-column="86" />
+            <state relative-caret-position="-75">
+              <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
               <folding>
-                <element signature="e#1849#1865#0" expanded="true" />
+                <element signature="e#2960#2976#0" expanded="true" />
                 <element signature="method#controlAnomally#0;class#IoTTrafficDataProcessor#0" />
-                <element signature="class#1579:1802" />
-                <element signature="method#call#0;class#1579:1802" />
-                <element signature="e#1723#1757#1" />
-                <element signature="e#1762#1789#1" />
-                <element signature="class#1867:2082" />
-                <element signature="method#call#0;class#1867:2082" />
-                <element signature="class#2209:2700" />
-                <element signature="method#call#0;class#2209:2700" />
-                <element signature="method#processTotalTrafficData#0;class#IoTTrafficDataProcessor#0" />
-                <element signature="docComment;method#processWindowTrafficData#0;class#IoTTrafficDataProcessor#0" />
-                <element signature="e#6378#6617#0" />
-                <element signature="e#6791#7281#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/createKeySpace.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="31" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/dto/AggregateKey2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -123,6 +95,12 @@
     <findStrings>
       <find>CREATE</find>
       <find>keyspace</find>
+      <find>maptopa</find>
+      <find>duration</find>
+      <find>AggregateKey3</find>
+      <find>non</find>
+      <find>non fil</find>
+      <find>poi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -140,10 +118,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/iot/spark/entity/TotalTrafficData.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/iot/spark/entity/WindowTrafficData.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/iot/spark/util/IoTDataDecoder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTDataProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/iot/spark/entity/AverageSpeedTrafficData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iot/spark/dto/AggregateKey3.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTTrafficDataProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/resources/createKeySpace.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTDataProcessor.java" />
       </list>
     </option>
   </component>
@@ -297,7 +276,7 @@
       <option name="presentableId" value="Default" />
       <updated>1577686659620</updated>
       <workItem from="1577686660793" duration="971000" />
-      <workItem from="1577774978993" duration="5410000" />
+      <workItem from="1577774978993" duration="10729000" />
     </task>
     <task id="LOCAL-00001" summary="add resource files">
       <created>1577687467117</created>
@@ -313,17 +292,24 @@
       <option name="project" value="LOCAL" />
       <updated>1577687612424</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added average speed implementation">
+      <created>1577780419284</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1577780419284</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6381000" />
+    <option name="totallyTimeSpent" value="11700000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25773746" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26414087" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -331,6 +317,7 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Learn" order="7" />
+      <window_info anchor="bottom" id="Messages" visible="true" weight="0.2623295" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -343,7 +330,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Version Control" order="12" visible="true" weight="0.32948583" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32948583" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -374,20 +361,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add resource files" />
     <MESSAGE value="addd" />
-    <option name="LAST_COMMIT_MESSAGE" value="addd" />
+    <MESSAGE value="added average speed implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="added average speed implementation" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/dto/AggregateKey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/dto/AggregateKey2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -416,16 +397,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTDataProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/dto/IoTData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -434,30 +405,6 @@
             <element signature="e#1148#1149#0" expanded="true" />
             <element signature="e#1167#1168#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/entity/TotalTrafficData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="16" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/entity/AnomallyTrafficData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/createKeySpace.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="42" lean-forward="true" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -504,25 +451,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/entity/AnomallyTrafficData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/entity/TotalTrafficData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="16" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/dto/AggregateKey2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/dto/AggregateKey3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <folding>
+            <element signature="e#271#272#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#357#358#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/createKeySpace.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="31" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTTrafficDataProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="83" column="86" selection-start-line="83" selection-start-column="86" selection-end-line="83" selection-end-column="86" />
+        <state relative-caret-position="-75">
+          <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
           <folding>
-            <element signature="e#1849#1865#0" expanded="true" />
+            <element signature="e#2960#2976#0" expanded="true" />
             <element signature="method#controlAnomally#0;class#IoTTrafficDataProcessor#0" />
-            <element signature="class#1579:1802" />
-            <element signature="method#call#0;class#1579:1802" />
-            <element signature="e#1723#1757#1" />
-            <element signature="e#1762#1789#1" />
-            <element signature="class#1867:2082" />
-            <element signature="method#call#0;class#1867:2082" />
-            <element signature="class#2209:2700" />
-            <element signature="method#call#0;class#2209:2700" />
-            <element signature="method#processTotalTrafficData#0;class#IoTTrafficDataProcessor#0" />
-            <element signature="docComment;method#processWindowTrafficData#0;class#IoTTrafficDataProcessor#0" />
-            <element signature="e#6378#6617#0" />
-            <element signature="e#6791#7281#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/iot/spark/processor/IoTDataProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

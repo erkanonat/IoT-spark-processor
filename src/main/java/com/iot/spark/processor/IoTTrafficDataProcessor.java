@@ -19,12 +19,12 @@ import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaMapWithStateDStream;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
 import scala.Tuple2;
-import scala.Tuple3;
-import scala.util.parsing.combinator.testing.Str;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.datastax.spark.connector.japi.CassandraStreamingJavaUtil.javaFunctions;
 
@@ -35,32 +35,24 @@ public class IoTTrafficDataProcessor implements Serializable {
 
 	public void calculateAverageSpeed(JavaDStream<IoTData> filteredIotDataStream) {
 
-		JavaPairDStream<String, Double> averages = filteredIotDataStream.mapToPair(iot-> new Tuple2<String,List<Double>>(iot.getPtsId(),Arrays.asList(new Double[]{iot.getSpeed()})))
-				.reduceByKeyAndWindow((new Function2<Tuple2<String, List<Double>>, Tuple2<String, List<Double>>, Tuple2<String, List<Double>>>() {
-					@Override
-					public Tuple2<String, List<Double>> call(Tuple2<String, List<Double>> first, Tuple2<String, List<Double>> second) throws Exception {
-							first._2.addAll(second._2);
-							return new Tuple2<String, List<Double>>(first._1, first._2 ) ;
-			}
-		}, Durations.seconds(600),Durations.seconds(30))
-				.map(new Function<Tuple2<String, List<Double>>, Tuple2<String,Double>>() {
-			@Override
-			public Tuple2<String, Double> call(Tuple2<String, List<Double>> data) throws Exception {
+		JavaPairDStream<String, Tuple2<Double, Long>> stream1 =
+				filteredIotDataStream.mapToPair(iot -> new Tuple2<>(iot.getPtsId(),
+						new Tuple2<Double, Long>(iot.getSpeed(), 1L)));
 
-				String pts = data._1;
-				Double sum = 0d;
-				for(int i=0;i<data._2.size();i++) {
-					sum += data._2.get(i);
-				}
-				Double average = sum / data._2.size();
-				return new Tuple2<>(pts,average);
+		JavaPairDStream<String, Tuple2<Double, Long>> stream2 =
+		stream1.reduceByKeyAndWindow(new Function2<Tuple2<Double, Long>, Tuple2<Double, Long>, Tuple2<Double, Long>>() {
+			@Override
+			public Tuple2<Double, Long> call(Tuple2<Double, Long> item1,
+											 Tuple2<Double, Long> item2) throws Exception {
+				return new Tuple2<>((item1._1+item2._1 ), (item1._2+item2._2) );
 			}
-		})
-		;
+		}, Durations.seconds(1800), Durations.seconds(30));
+
+		JavaPairDStream<String,Double> stream3 = stream2.mapToPair(iot->new Tuple2<>(iot._1, (iot._2._1 / iot._2._2 )));
 
 		// Transform to dstream of TrafficData
-		JavaDStream<AverageSpeedTrafficData> averageSpeedTrafficDStream = averages.map(new Function<Tuple2<String, Double>,
-				AverageSpeedTrafficData>() {
+		JavaDStream<AverageSpeedTrafficData> averageSpeedTrafficDStream = stream3.map(new Function<Tuple2<String,
+				Double>, AverageSpeedTrafficData>() {
 			@Override
 			public AverageSpeedTrafficData call(Tuple2<String, Double> item) throws Exception {
 				AverageSpeedTrafficData data = new AverageSpeedTrafficData();
