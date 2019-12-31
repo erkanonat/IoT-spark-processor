@@ -1,0 +1,28 @@
+CREATE KEYSPACE IF NOT EXISTS TrafficKeySpace WITH
+replication = {'class':'SimpleStrategy',
+'replication_factor':1};
+
+drop table TrafficKeySpace.Total_Traffic;
+drop table TrafficKeySpace.Window_Traffic;
+drop table TrafficKeySpace.Anomally_Traffic_Data;
+
+
+CREATE TABLE TrafficKeySpace.Total_Traffic (ptsId text,
+vehicleType text, totalCount bigint, timeStamp
+timestamp,recordDate text,PRIMARY KEY
+(ptsId,recordDate,vehicleType));
+
+CREATE TABLE TrafficKeySpace.Window_Traffic (ptsId
+text, vehicleType text, totalCount bigint, timeStamp
+timestamp,recordDate text,PRIMARY KEY
+(ptsId,recordDate,vehicleType));
+
+CREATE TABLE TrafficKeySpace.Anomally_Traffic_Data (plateNumber text,
+duplicates text, totalCount bigint, timeStamp
+timestamp,recordDate text,PRIMARY KEY
+(plateNumber,recordDate,duplicates));
+
+CREATE TABLE TrafficKeySpace.Average_Speed_Traffic (ptsId text,
+averageSpeed double,  timeStamp
+timestamp,recordDate text,PRIMARY KEY
+(ptsId,averageSpeed,recordDate));

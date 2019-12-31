@@ -5,6 +5,7 @@ import com.google.common.base.Optional;
 import com.iot.spark.dto.AggregateKey;
 import com.iot.spark.dto.IoTData;
 import com.iot.spark.entity.AnomallyTrafficData;
+import com.iot.spark.entity.AverageSpeedTrafficData;
 import com.iot.spark.entity.TotalTrafficData;
 import com.iot.spark.entity.WindowTrafficData;
 import org.apache.log4j.Logger;
@@ -18,18 +19,71 @@ import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaMapWithStateDStream;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
 import scala.Tuple2;
+import scala.Tuple3;
+import scala.util.parsing.combinator.testing.Str;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static com.datastax.spark.connector.japi.CassandraStreamingJavaUtil.javaFunctions;
 
 
 public class IoTTrafficDataProcessor implements Serializable {
 	private static final Logger logger = Logger.getLogger(IoTTrafficDataProcessor.class);
+
+
+	public void calculateAverageSpeed(JavaDStream<IoTData> filteredIotDataStream) {
+
+		JavaPairDStream<String, Double> averages = filteredIotDataStream.mapToPair(iot-> new Tuple2<String,List<Double>>(iot.getPtsId(),Arrays.asList(new Double[]{iot.getSpeed()})))
+				.reduceByKeyAndWindow((new Function2<Tuple2<String, List<Double>>, Tuple2<String, List<Double>>, Tuple2<String, List<Double>>>() {
+					@Override
+					public Tuple2<String, List<Double>> call(Tuple2<String, List<Double>> first, Tuple2<String, List<Double>> second) throws Exception {
+							first._2.addAll(second._2);
+							return new Tuple2<String, List<Double>>(first._1, first._2 ) ;
+			}
+		}, Durations.seconds(600),Durations.seconds(30))
+				.map(new Function<Tuple2<String, List<Double>>, Tuple2<String,Double>>() {
+			@Override
+			public Tuple2<String, Double> call(Tuple2<String, List<Double>> data) throws Exception {
+
+				String pts = data._1;
+				Double sum = 0d;
+				for(int i=0;i<data._2.size();i++) {
+					sum += data._2.get(i);
+				}
+				Double average = sum / data._2.size();
+				return new Tuple2<>(pts,average);
+			}
+		})
+		;
+
+		// Transform to dstream of TrafficData
+		JavaDStream<AverageSpeedTrafficData> averageSpeedTrafficDStream = averages.map(new Function<Tuple2<String, Double>,
+				AverageSpeedTrafficData>() {
+			@Override
+			public AverageSpeedTrafficData call(Tuple2<String, Double> item) throws Exception {
+				AverageSpeedTrafficData data = new AverageSpeedTrafficData();
+				data.setPtsId(item._1);
+				data.setAverageSpeed(item._2);
+				data.setTimeStamp(new Date());
+				data.setRecordDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+				return data;
+			}
+		});
+
+		// Map Cassandra table column
+		Map<String, String> columnNameMappings = new HashMap<String, String>();
+
+		columnNameMappings.put("ptsId", "ptsid");
+		columnNameMappings.put("averageSpeed", "averagespeed");
+		columnNameMappings.put("timeStamp", "timestamp");
+		columnNameMappings.put("recordDate", "recorddate");
+
+		// call CassandraStreamingJavaUtil function to save in DB
+		javaFunctions(averageSpeedTrafficDStream).writerBuilder("traffickeyspace", "average_speed_traffic",
+				CassandraJavaUtil.mapToRow(AverageSpeedTrafficData.class, columnNameMappings)).saveToCassandra();
+	}
 
 
 	public void controlAnomally(JavaDStream<IoTData> filteredIotDataStream) {
