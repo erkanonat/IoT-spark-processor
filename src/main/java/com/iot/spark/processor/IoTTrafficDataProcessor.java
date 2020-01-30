@@ -30,6 +30,7 @@ import static com.datastax.spark.connector.japi.CassandraStreamingJavaUtil.javaF
 
 
 public class IoTTrafficDataProcessor implements Serializable {
+
 	private static final Logger logger = Logger.getLogger(IoTTrafficDataProcessor.class);
 
 
