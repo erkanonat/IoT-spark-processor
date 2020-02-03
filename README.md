@@ -12,4 +12,10 @@ this project performing 4 different analyzing operation
   4. control anomally events which controls duplicates plate numbers which seen in different PTS sensors in same time interval.
   
   
- 
+ architecture diagram of  iot-traffic-monitoring system
+
+![Alt text](/src/main/resources/architecture.png?raw=true "architecture")  
+
+
+
+![Alt text](/src/main/resources/spark-rdd.png?raw=true "spark processing RDD")  
