@@ -93,7 +93,7 @@ public class IoTTrafficDataProcessor implements Serializable {
 							return s1;
 						}
 					}
-				}, Durations.seconds(600), Durations.seconds(30))
+				}, Durations.seconds(120), Durations.seconds(10))
 				.filter(new Function<Tuple2<String, String>, Boolean>() {
 					@Override
 					public Boolean call(Tuple2<String, String> stringLongTuple2) throws Exception {

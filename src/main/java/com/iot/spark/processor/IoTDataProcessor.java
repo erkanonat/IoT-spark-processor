@@ -1,9 +1,10 @@
-package com.iot.spark.processor;
 
+package com.iot.spark.processor;
 
 import com.iot.spark.dto.IoTData;
 import com.iot.spark.util.IoTDataDecoder;
 import com.iot.spark.util.PropertyFileReader;
+
 import kafka.serializer.StringDecoder;
 import org.apache.log4j.Logger;
 import org.apache.spark.SparkConf;
@@ -60,11 +61,11 @@ public class IoTDataProcessor {
          iotDataStream.cache();
 
 		 //process data
-		 IoTTrafficDataProcessor iotTrafficProcessor = new IoTTrafficDataProcessor();
+		 com.iot.spark.processor.IoTTrafficDataProcessor iotTrafficProcessor = new com.iot.spark.processor.IoTTrafficDataProcessor();
 		 iotTrafficProcessor.processTotalTrafficData(iotDataStream);
 		 iotTrafficProcessor.processWindowTrafficData(iotDataStream);
 		 iotTrafficProcessor.controlAnomally(iotDataStream);
-		 iotTrafficProcessor.calculateAverageSpeed(iotDataStream);
+//		 iotTrafficProcessor.calculateAverageSpeed(iotDataStream);
 		 
 		 //start context
 		 jssc.start();            
